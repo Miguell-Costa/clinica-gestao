@@ -15,12 +15,12 @@ public class PacienteDAO {
 
     // Metodo para adicionar um paciente na base de dados
     public void create(Paciente paciente){
-        String sql = "INSERT INTO paciente (nome, email, telefone, data_nascimento) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO paciente (nome, email, telemovel, data_nascimento) VALUES(?,?,?,?)";
 
         try(Connection conn = DataBaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, paciente.getNome());
             stmt.setString(2, paciente.getEmail());
-            stmt.setInt(3, paciente.getTelemovel());
+            stmt.setString(3, paciente.getTelemovel());
             stmt.setString(4, paciente.getDataNascimento());
 
             stmt.executeUpdate();
@@ -42,13 +42,14 @@ public class PacienteDAO {
                         rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("email"),
-                        rs.getInt("telemovel"),
+                        rs.getString("telemovel"),
                         rs.getString("data_nascimento")
                 );
                 pacientes.add(novoPaciente);
             }
         }catch (SQLException e){
             e.printStackTrace();
+            System.out.println("Erro!");
         }
         return pacientes;
     }
@@ -60,7 +61,7 @@ public class PacienteDAO {
         try(Connection conn = DataBaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, paciente.getNome());
             stmt.setString(2, paciente.getEmail());
-            stmt.setInt(3, paciente.getTelemovel());
+            stmt.setString(3, paciente.getTelemovel());
             stmt.setString(4, paciente.getDataNascimento());
             stmt.setInt(5, paciente.getId());
 
@@ -82,7 +83,8 @@ public class PacienteDAO {
 
             System.out.println("Paciente eleminado com sucesso");
         }catch (SQLException e){
-
+            e.printStackTrace();
+            System.out.println("Erro!");
         }
     }
 
