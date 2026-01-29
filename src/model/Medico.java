@@ -2,14 +2,14 @@ package model;
 
 // classe que representa um medico
 
-public class medico {
+public class Medico {
     private int id;
     private String nome;
     private String especialidade;
     private String email;
 
     // construtor com id
-    public medico(int id, String nome, String especialidade, String email){
+    public Medico(int id, String nome, String especialidade, String email){
         this.id = id;
         this.nome = nome;
         this.especialidade = especialidade;
@@ -17,7 +17,7 @@ public class medico {
     }
 
     // construtor sem id
-    public medico(String nome, String especialidade, String email){
+    public Medico(String nome, String especialidade, String email){
         this.nome = nome;
         this.especialidade = especialidade;
         this.email = email;

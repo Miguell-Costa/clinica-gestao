@@ -2,7 +2,7 @@ package model;
 
 // classe que representa um paciente
 
-public class paciente {
+public class Paciente {
     private int id;
     private String nome;
     private String email;
@@ -10,7 +10,7 @@ public class paciente {
     private String dataNascimento;
 
     // Construtor com id
-    public paciente(int id, String nome, String email, int telemovel, String dataNascimento){
+    public Paciente(int id, String nome, String email, int telemovel, String dataNascimento){
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -19,7 +19,7 @@ public class paciente {
     }
 
     // Construtor sem id
-    public paciente( String nome, String email, int telemovel, String dataNascimento){
+    public Paciente(String nome, String email, int telemovel, String dataNascimento){
         this.nome = nome;
         this.email = email;
         this.telemovel = telemovel;

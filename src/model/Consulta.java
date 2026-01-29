@@ -2,7 +2,7 @@ package model;
 
 // classe que presenta uma consulta
 
-public class consulta {
+public class Consulta {
     private int id;
     private int pacienteId;
     private int medicoId;
@@ -11,7 +11,7 @@ public class consulta {
     private String obervacoes;
 
     //construtor com id da consulta;
-    public consulta(int id, int pacienteId, int medicoId, String dataConsulta, String horaConsulta, String obervacoes) {
+    public Consulta(int id, int pacienteId, int medicoId, String dataConsulta, String horaConsulta, String obervacoes) {
         this.id = id;
         this.pacienteId = pacienteId;
         this.medicoId = medicoId;
@@ -21,7 +21,7 @@ public class consulta {
     }
 
     // construtor sem id da consulta
-    public consulta(int pacienteId, int medicoId, String dataConsulta, String horaConsulta, String obervacoes) {
+    public Consulta(int pacienteId, int medicoId, String dataConsulta, String horaConsulta, String obervacoes) {
         this.pacienteId = pacienteId;
         this.medicoId = medicoId;
         this.dataConsulta = dataConsulta;
