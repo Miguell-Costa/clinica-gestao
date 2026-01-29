@@ -55,7 +55,7 @@ public class PacienteDAO {
     }
 
     // metodo update para alterar um registo da base de dados atravez do id
-    public void update(Paciente paciente){
+    public void update(int id, Paciente paciente){
         String sql = "UPDATE paciente SET nome=?, email=?, telemovel=?, data_Nascimento=? WHERE id=?";
 
         try(Connection conn = DataBaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -63,7 +63,7 @@ public class PacienteDAO {
             stmt.setString(2, paciente.getEmail());
             stmt.setString(3, paciente.getTelemovel());
             stmt.setString(4, paciente.getDataNascimento());
-            stmt.setInt(5, paciente.getId());
+            stmt.setInt(5, id);
 
             stmt.executeUpdate();
 

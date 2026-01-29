@@ -55,14 +55,14 @@ public class MedicoDAO {
         return medicos;
     }
 
-    public void update(Medico medico){
+    public void update(int id, Medico medico){
         String sql = "UPDATE medico SET nome=?, especialidade=?, email=? WHERE id=?";
 
         try(Connection conn = DataBaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, medico.getNome());
             stmt.setString(2, medico.getEspecialidade());
             stmt.setString(3, medico.getEmail());
-            stmt.setInt(4, medico.getId());
+            stmt.setInt(4, id);
 
             stmt.executeUpdate();
 
