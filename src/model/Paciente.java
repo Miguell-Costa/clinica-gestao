@@ -6,11 +6,11 @@ public class Paciente {
     private int id;
     private String nome;
     private String email;
-    private int telemovel;
+    private String telemovel;
     private String dataNascimento;
 
     // Construtor com id
-    public Paciente(int id, String nome, String email, int telemovel, String dataNascimento){
+    public Paciente(int id, String nome, String email, String telemovel, String dataNascimento){
         this.id = id;
         this.nome = nome;
         this.email = email;
@@ -19,7 +19,7 @@ public class Paciente {
     }
 
     // Construtor sem id
-    public Paciente(String nome, String email, int telemovel, String dataNascimento){
+    public Paciente(String nome, String email, String telemovel, String dataNascimento){
         this.nome = nome;
         this.email = email;
         this.telemovel = telemovel;
@@ -50,11 +50,11 @@ public class Paciente {
         this.email = email;
     }
 
-    public int getTelemovel() {
+    public String getTelemovel() {
         return telemovel;
     }
 
-    public void setTelemovel(int telemovel) {
+    public void setTelemovel(String telemovel) {
         this.telemovel = telemovel;
     }
 
