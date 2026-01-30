@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class MedicoController {
+public class MedicoController extends BaseController{
     private MedicoDAO medicoDAO;
 
     public MedicoController(MedicoDAO medicoDAO) {
@@ -58,11 +58,5 @@ public class MedicoController {
         for (Medico m: medicos){
             System.out.println(m);
         }
-    }
-
-    // metodo para verificar um email
-    public boolean validarEmail(String email){
-        String regex = "^[\\w.-]+@([a-zA-Z-]+\\.)+[a-zA-Z]{2,}$";
-        return Pattern.matches(regex, email);
     }
 }

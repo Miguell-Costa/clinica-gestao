@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class PacienteController {
+public class PacienteController extends BaseController{
     private PacienteDAO pacienteDAO;
 
     public PacienteController(PacienteDAO pacienteDAO) {
@@ -19,7 +19,9 @@ public class PacienteController {
 
     // adicionar paciente
     public void adicionarPaciente(String nome, String email, String telemovel, String dataNascimento){
-        verificarParametros(email, telemovel, dataNascimento);
+        if(verificarParametros(email, telemovel, dataNascimento)){
+            return;
+        }
 
         Paciente paciente = new Paciente(nome, email, telemovel, dataNascimento);
 
@@ -63,52 +65,22 @@ public class PacienteController {
     }
 
     // metodo para verificar os parametros
-    public void verificarParametros(String email, String telemovel, String dataNascimento){
+    public boolean verificarParametros(String email, String telemovel, String dataNascimento){
         if(!validarEmail(email)){
             System.out.println("Email Inválido!");
-            return;
+            return true;
         }
 
         if(!validarTelemovel(telemovel)){
             System.out.println("Numero de Telemovel Inválido!");
-            return;
+            return true;
         }
 
         if (!validarData(dataNascimento)){
             System.out.println("Data Inválida! Uso o formato AAAA/MM/DD");
-            return;
-        }
-    }
-
-    // metodo para verificar um email
-    public boolean validarEmail(String email){
-        String regex = "^[\\w.-]+@([a-zA-Z-]+\\.)+[a-zA-Z]{2,}$";
-        return Pattern.matches(regex, email);
-    }
-
-    // Metodo para verificar telemovel
-    public boolean validarTelemovel(String telemovel){
-        String regex = "^9\\d{8}$";
-        return Pattern.matches(regex, telemovel);
-    }
-
-    // Metodo para verificar a data
-    public boolean validarData(String data) {
-
-        // Verificar formato YYYY/MM/DD
-        String regex = "^\\d{4}/\\d{2}/\\d{2}$";
-        if (!Pattern.matches(regex, data)) {
-            return false;
-        }
-
-        // Verificar se a data existe
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-            LocalDate.parse(data, formatter);
             return true;
-        } catch (DateTimeParseException e) {
-            return false;
         }
+        return false;
     }
 
 }

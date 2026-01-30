@@ -1,7 +1,6 @@
 package dao;
 
 import db.DataBaseConnection;
-import model.Consulta;
 import model.Paciente;
 
 import java.sql.Connection;
@@ -88,5 +87,19 @@ public class PacienteDAO {
         }
     }
 
+    // metodo para verificar se um paciente existe atraves do id
+    public boolean existePaciente(int id){
+        String sql = "Select 1 FROM paciente WHERE id=?";
 
+        try(Connection conn = DataBaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql);){
+
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            return rs.next();
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

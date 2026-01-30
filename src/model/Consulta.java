@@ -21,7 +21,7 @@ public class Consulta {
     }
 
     // construtor sem id da consulta
-    public Consulta(int pacienteId, int medicoId, String dataConsulta, String horaConsulta, String obervacoes) {
+    public Consulta(int pacienteId, int medicoId, String consulta, String dataConsulta, String horaConsulta, String obervacoes) {
         this.pacienteId = pacienteId;
         this.medicoId = medicoId;
         this.dataConsulta = dataConsulta;
